@@ -1,5 +1,5 @@
 
-import {  individualInfo ,BakongKHQR ,API_CHECK_PAYMENT_URL,BAKONG_TOKEN} from "../../lip/bakong";
+import {  individualInfo ,BakongKHQR ,API_CHECK_PAYMENT_URL,BAKONG_TOKEN} from "../../lib/bakong";
 import  { khqrData } from "bakong-khqr";
 export async function POST(req: Request) {
     const optionalData = {
