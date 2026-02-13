@@ -3,15 +3,18 @@ import { useState, useEffect, useRef } from "react";
 import PaymentQRCode from "../components/khqr";
 
 export default function BakongPage() {
-  const [qr, setQr] = useState("");
-  const [md5, setMd5] = useState("");
-  const [status, setStatus] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [polling, setPolling] = useState(false);
-  const [countdown, setCountdown] = useState(300);
-  const [payment, setPayment] = useState<any>(null);
-  const pollingIntervalRef = useRef(null);
-  const countdownIntervalRef = useRef(null);
+    const [qr, setQr] = useState("");
+    const [md5, setMd5] = useState("");
+    const [status, setStatus] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [polling, setPolling] = useState(false);
+    const [countdown, setCountdown] = useState(300);
+    const [payment, setPayment] = useState<any>(null);
+    const pollingIntervalRef =
+    useRef<ReturnType<typeof setInterval> | null>(null);
+
+    const countdownIntervalRef =
+    useRef<ReturnType<typeof setInterval> | null>(null);
 
   const generateQR = async () => {
     setStatus("");
@@ -57,7 +60,6 @@ export default function BakongPage() {
   const startPolling = (md5Value: string) => {
     setPolling(true);
     setCountdown(300);
-    // Check immediately with md5Value
     checkPaymentStatus(md5Value);
     
     pollingIntervalRef.current = setInterval(() => {
